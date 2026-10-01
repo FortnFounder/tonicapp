@@ -92,3 +92,12 @@ describe('fluxo', () => {
     expect(moved).toBeLessThanOrEqual(4);
   });
 });
+
+describe('grafia cromática', () => {
+  it('nota emprestada usa o grau certo', () => {
+    expect([1, 3, 6, 8, 10].map((pc) => spellIn(pc, C))).toEqual(['D♭', 'E♭', 'F♯', 'A♭', 'B♭']);
+    const G: Tonic = { pc: 7, letter: 4 };
+    expect(spellIn(5, G)).toBe('F');
+    expect(spellIn(4, C, 'aeolian')).toBe('E');
+  });
+});

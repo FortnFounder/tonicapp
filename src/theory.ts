@@ -28,18 +28,18 @@ export interface Tonic {
 
 export const tonicName = (t: Tonic) => spellOn(t.letter, t.pc);
 
-/** Tons de bemol escrevem cromático com bemol; os outros, com sustenido. */
-export const prefersFlats = (t: Tonic) => tonicName(t).includes('♭') || t.pc === 5;
+/** Grau cromático pela função mais comum: ♭2, ♭3, ♯4, ♭6, ♭7 (o que os acordes emprestados usam). */
+const CHROMATIC_DEGREE: Record<number, number> = { 1: 1, 3: 2, 6: 3, 8: 5, 10: 6 };
 
-const SHARP_NAMES = ['C', 'C♯', 'D', 'D♯', 'E', 'F', 'F♯', 'G', 'G♯', 'A', 'A♯', 'B'];
-const FLAT_NAMES = ['C', 'D♭', 'D', 'E♭', 'E', 'F', 'G♭', 'G', 'A♭', 'A', 'B♭', 'B'];
-
-/** Grafia de uma altura absoluta no contexto de um tom e modo: nota do modo pela letra do grau, cromática pela preferência do tom. */
+/** Grafia de uma altura absoluta no contexto de um tom e modo: nota do modo pela letra do grau, cromática pelo grau emprestado. */
 export function spellIn(pcAbs: number, t: Tonic, mode: ModeId = 'ionian'): string {
   const rel = mod12(pcAbs - t.pc);
   const deg = MODES[mode].steps.indexOf(rel);
   if (deg >= 0) return spellOn(t.letter + deg, pcAbs);
-  return (prefersFlats(t) ? FLAT_NAMES : SHARP_NAMES)[mod12(pcAbs)];
+  const cd = CHROMATIC_DEGREE[rel];
+  if (cd !== undefined) return spellOn(t.letter + cd, pcAbs);
+  // Fora disso (♮3 no menor, ♮7 no dórico…): a letra do grau maior.
+  return spellOn(t.letter + MAJOR.indexOf(rel), pcAbs);
 }
 
 // ── Modos ───────────────────────────────────────────────────────────────────

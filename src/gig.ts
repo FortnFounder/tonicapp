@@ -79,6 +79,8 @@ export interface GigBar {
   grade: GradeId;
   score: number;
   released: number;
+  /** Acumulado depois do compasso (o arranjo usa pra virada e crescendo). */
+  stored: number;
 }
 
 /** Um show: 8 compassos do loop, medidor começando do zero, sem garantia (o show é limpo). */
@@ -96,7 +98,7 @@ export function simulateShow(s: State, v: VenueId, level: number, rng: Rng, now:
     stored = bt.after;
     const grade = rollGrade(gradeOdds(s, bt, now, { soaring: 0, transcendent: 0 }), rng);
     const mult = info.mult * bt.release * req * (info.modeSig ? MODE_BONUS : 1);
-    bars.push({ slot: k, id: s.loop[k], chips, mult, grade, score: chips * mult * gradeDef(grade).mult, released: bt.released });
+    bars.push({ slot: k, id: s.loop[k], chips, mult, grade, score: chips * mult * gradeDef(grade).mult, released: bt.released, stored: bt.after });
   }
   return bars;
 }
