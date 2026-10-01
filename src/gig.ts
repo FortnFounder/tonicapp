@@ -167,13 +167,10 @@ export interface GigRun {
 
 /** Caixote pela colocação e nível (Festival sobe um degrau). */
 function crateFor(v: VenueId, level: number, place: number, rng: Rng): CrateTier | null {
-  let tier: number;
-  if (place === 1) tier = level <= 4 ? 1 : level <= 8 ? 2 : 3;
-  else if (place === 2) tier = level < 5 ? 0 : 1;
-  else if (place === 3) tier = rng() < 0.5 ? 0 : -1;
-  else tier = -1;
-  if (tier >= 0 && v === 'festival') tier = Math.min(3, tier + 1);
-  return tier < 0 ? null : CRATE_ORDER[tier];
+  if (place > 3 || rng() >= GIG.crateChance[place - 1]) return null;
+  let tier = place === 1 ? (level <= 3 ? 0 : level <= 6 ? 1 : level <= 9 ? 2 : 3) : place === 2 ? (level < 6 ? 0 : 1) : 0;
+  if (v === 'festival') tier = Math.min(3, tier + 1);
+  return CRATE_ORDER[tier];
 }
 
 /** Toca o show (gasta 1 booking), ranqueia e entrega o prêmio. A tela só revela o que já aconteceu. */
@@ -196,11 +193,11 @@ export function playGig(s: State, v: VenueId, level: number, rng: Rng, now: numb
   const place = 1 + rivals.filter((r) => r.score > total).length;
   const def = VENUE[v];
   const reward: GigReward = { fans: 0, res: 0, crate: null, records: 0, levelUp: false };
-  reward.fans = Math.round(GIG.fans.base[place - 1] * Math.pow(level, GIG.fans.exp) * Math.sqrt(def.hard) * (v === 'festival' ? 2 : 1));
+  reward.fans = Math.max(place <= 2 ? 1 : 0, Math.round(GIG.fans.base[place - 1] * Math.pow(level, GIG.fans.exp) * Math.sqrt(def.hard) * (v === 'festival' ? 2 : 1)));
   if (def.res) reward.res = Math.max(place <= 3 ? 1 : 0, Math.round(GIG.res.base * Math.pow(GIG.res.growth, level - 1) * GIG.res.place[place - 1]));
   reward.crate = crateFor(v, level, place, rng);
   const g = s.gigs[v];
-  if (place === 1 && g.best[level - 1] !== 1) reward.records = GIG.firstRecords * level;
+  if (place === 1 && g.best[level - 1] !== 1) reward.records = Math.ceil(level / 2) * GIG.firstRecords;
   if (place === 1 && level === g.open && level < GIG.levels) {
     g.open++;
     reward.levelUp = true;

@@ -143,7 +143,7 @@ function onBar(b: seq.ScheduledBar) {
   }
   mutate(() => undefined);
   // Com cena aberta (show, caixote, gravação, Jam) o palco não aparece: sem efeito por cima dela.
-  const covered = !!(ui.show || ui.crate || ui.record || ui.jam);
+  const covered = !!(ui.show || ui.crate || ui.record || ui.jam || ui.welcome || ui.discover.length || ui.settings || ui.info);
   if (!covered) {
     gradeFx(res.grade, '.stage');
     notesFx(res);

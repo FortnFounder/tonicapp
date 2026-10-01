@@ -10,6 +10,7 @@ import { startShow, skipShow, endShow } from '../conductor';
 import { sfx } from '../audio/sfx';
 import { chordName, fnColor, fnOf, roman } from '../theory';
 import { LockLine, SecHead } from './common';
+import { coachOn } from '../coach';
 import { Check, Cross, Crate, Heart, Mic, RES_ICON, Record } from './icons';
 
 const ORD = ['1st', '2nd', '3rd', '4th'];
@@ -124,7 +125,7 @@ function VenueCard(p: { id: VenueId }) {
           </div>
         ))}
       </div>
-      <button class="btn wide big" disabled={game.bookings <= 0} onClick={play}>
+      <button class={`btn wide big${p.id === 'coffee' ? coachOn('play-gig') : ''}`} disabled={game.bookings <= 0} onClick={play}>
         Play the gig
       </button>
     </div>

@@ -10,6 +10,7 @@ import { isOpen } from '../unlock';
 import { startJam } from '../conductor';
 import { sfx } from '../audio/sfx';
 import { InfoBtn, LockLine, SecHead, Sheet } from './common';
+import { coachOn } from '../coach';
 import { Fire, INST_ICON } from './icons';
 
 const FN_NAME = ['Tonic', 'Subdominant', 'Dominant'];
@@ -138,7 +139,7 @@ export function LoopSection() {
           const f = fnColor(fnOf(ch));
           const tn = tension(ch, game.mode);
           return (
-            <button key={i} class={`slot${i === cur ? ' now' : ''}`} aria-label={`Bar ${i + 1}: ${chordName(ch, G.tonicOf(game))}`} onClick={() => setUi({ picker: i })}>
+            <button key={i} class={`slot${i === cur ? ' now' : ''}${i === 2 ? coachOn('slot') : ''}`} aria-label={`Bar ${i + 1}: ${chordName(ch, G.tonicOf(game))}`} onClick={() => setUi({ picker: i })}>
               {v.tension.release > 1.05 && <span class="rel">×{v.tension.release.toFixed(2)}</span>}
               <span class={`r f${f}`}>{ch.label ? roman(ch) : roman(ch)}</span>
               <span class="n">{chordName(ch, G.tonicOf(game))}</span>
@@ -282,7 +283,7 @@ export function ChordPicker() {
                 const d = analyze(loop, game.mode).score - base;
                 const f = fnColor(fnOf(ch));
                 return (
-                  <button key={id} class={`slot${id === curId ? ' cur' : ''}`} onClick={() => pick(id)}>
+                  <button key={id} class={`slot${id === curId ? ' cur' : ''}${id === 'vi' ? coachOn('pick-vi') : ''}`} onClick={() => pick(id)}>
                     <span class={`r f${f}`}>{ch.label ?? roman(ch)}</span>
                     <span class="n">{chordName(ch, t)}</span>
                     <span class={`d${d > 0 ? ' up' : d < 0 ? ' down' : ''}`}>{id === curId ? 'now' : (d > 0 ? '+' : '') + d}</span>

@@ -36,30 +36,30 @@ export const CHORDS: ChordDef[] = [
   c('ii', 'triads', 2, 'min', 25),
   c('iii', 'triads', 3, 'min', 40),
   c('vii°', 'triads', 7, 'dim', 80),
-  c('V7', 'sevenths', 5, '7', 60, { base: 'V' }),
-  c('Imaj7', 'sevenths', 1, 'maj7', 80, { base: 'I' }),
-  c('ii7', 'sevenths', 2, 'm7', 80, { base: 'ii' }),
-  c('vi7', 'sevenths', 6, 'm7', 100, { base: 'vi' }),
-  c('IVmaj7', 'sevenths', 4, 'maj7', 120, { base: 'IV' }),
-  c('iii7', 'sevenths', 3, 'm7', 150, { base: 'iii' }),
-  c('viiø7', 'sevenths', 7, 'm7b5', 200, { base: 'vii°' }),
-  c('i', 'borrowed', 1, 'min', 120),
-  c('iv', 'borrowed', 4, 'min', 150),
-  c('♭VII', 'borrowed', 7, 'maj', 150, { acc: -1 }),
-  c('♭VI', 'borrowed', 6, 'maj', 200, { acc: -1 }),
-  c('♭III', 'borrowed', 3, 'maj', 250, { acc: -1 }),
-  c('v', 'borrowed', 5, 'min', 250),
-  c('V7/V', 'applied', 2, '7', 400, { applied: 7, base: 'II', label: 'V7/V' }),
-  c('V7/vi', 'applied', 3, '7', 450, { applied: 9, base: 'III', label: 'V7/vi' }),
-  c('V7/ii', 'applied', 6, '7', 500, { applied: 2, base: 'VI', label: 'V7/ii' }),
-  c('V7/IV', 'applied', 1, '7', 600, { applied: 5, base: 'I7', label: 'V7/IV' }),
-  c('V7/iii', 'applied', 7, '7', 800, { applied: 4, base: 'VII', label: 'V7/iii' }),
-  c('II', 'color', 2, 'maj', 900),
-  c('Vsus4', 'color', 5, 'sus4', 900, { base: 'V' }),
-  c('Iadd9', 'color', 1, 'add9', 1000, { base: 'I' }),
-  c('♭II', 'color', 2, 'maj', 1500, { acc: -1, label: 'Neapolitan' }),
-  c('♭II7', 'color', 2, '7', 2000, { acc: -1, label: 'Tritone sub' }),
-  c('vii°7', 'color', 7, 'dim7', 2500, { base: 'vii°' }),
+  c('V7', 'sevenths', 5, '7', 150, { base: 'V' }),
+  c('Imaj7', 'sevenths', 1, 'maj7', 200, { base: 'I' }),
+  c('ii7', 'sevenths', 2, 'm7', 200, { base: 'ii' }),
+  c('vi7', 'sevenths', 6, 'm7', 250, { base: 'vi' }),
+  c('IVmaj7', 'sevenths', 4, 'maj7', 300, { base: 'IV' }),
+  c('iii7', 'sevenths', 3, 'm7', 400, { base: 'iii' }),
+  c('viiø7', 'sevenths', 7, 'm7b5', 500, { base: 'vii°' }),
+  c('i', 'borrowed', 1, 'min', 300),
+  c('iv', 'borrowed', 4, 'min', 400),
+  c('♭VII', 'borrowed', 7, 'maj', 400, { acc: -1 }),
+  c('♭VI', 'borrowed', 6, 'maj', 500, { acc: -1 }),
+  c('♭III', 'borrowed', 3, 'maj', 600, { acc: -1 }),
+  c('v', 'borrowed', 5, 'min', 600),
+  c('V7/V', 'applied', 2, '7', 1500, { applied: 7, base: 'II', label: 'V7/V' }),
+  c('V7/vi', 'applied', 3, '7', 1800, { applied: 9, base: 'III', label: 'V7/vi' }),
+  c('V7/ii', 'applied', 6, '7', 2000, { applied: 2, base: 'VI', label: 'V7/ii' }),
+  c('V7/IV', 'applied', 1, '7', 2500, { applied: 5, base: 'I7', label: 'V7/IV' }),
+  c('V7/iii', 'applied', 7, '7', 3000, { applied: 4, base: 'VII', label: 'V7/iii' }),
+  c('II', 'color', 2, 'maj', 4000),
+  c('Vsus4', 'color', 5, 'sus4', 4000, { base: 'V' }),
+  c('Iadd9', 'color', 1, 'add9', 5000, { base: 'I' }),
+  c('♭II', 'color', 2, 'maj', 7500, { acc: -1, label: 'Neapolitan' }),
+  c('♭II7', 'color', 2, '7', 10000, { acc: -1, label: 'Tritone sub' }),
+  c('vii°7', 'color', 7, 'dim7', 12000, { base: 'vii°' }),
 ];
 
 export const CHORD = Object.fromEntries(CHORDS.map((x) => [x.id, x])) as Record<string, ChordDef>;
@@ -131,7 +131,7 @@ export const PITY = {
   transcendent: { soft: 400, hard: 500, step: 0.01 },
 };
 
-export const FANS_PER_BAR = 0.02;
+export const FANS_PER_BAR = 0.0015;
 export const NOTES_ROOT_BONUS = 2;
 
 // ── Banda ───────────────────────────────────────────────────────────────────
@@ -155,11 +155,11 @@ export interface InstDef {
 
 export const INSTRUMENTS: InstDef[] = [
   { id: 'guitar', role: 'harmony', name: 'Acoustic Guitar', short: 'Guitar', buy: 0, base: 1, tune: 10, sig: [4, 9, 2, 7, 11], stat: 'Tone' },
-  { id: 'drums', role: 'rhythm', name: 'Drum Kit', short: 'Drums', buy: 25, base: 0.8, tune: 15, sig: null, stat: 'Tempo' },
-  { id: 'bass', role: 'bass', name: 'Bass', short: 'Bass', buy: 150, base: 0.9, tune: 25, sig: [4, 9, 2, 7], stat: 'Depth' },
-  { id: 'keys', role: 'keys', name: 'Electric Piano', short: 'Keys', buy: 600, base: 1.4, tune: 60, sig: [0, 4, 7], stat: 'Tone' },
-  { id: 'flute', role: 'lead', name: 'Flute', short: 'Flute', buy: 2500, base: 0.7, tune: 150, sig: [11, 9, 7], stat: 'Feel' },
-  { id: 'strings', role: 'pad', name: 'Strings', short: 'Strings', buy: 15000, base: 0.8, tune: 500, sig: [7, 2, 9, 4], stat: 'Sustain' },
+  { id: 'drums', role: 'rhythm', name: 'Drum Kit', short: 'Drums', buy: 25, base: 0.8, tune: 25, sig: null, stat: 'Tempo' },
+  { id: 'bass', role: 'bass', name: 'Bass', short: 'Bass', buy: 400, base: 0.9, tune: 100, sig: [4, 9, 2, 7], stat: 'Depth' },
+  { id: 'keys', role: 'keys', name: 'Electric Piano', short: 'Keys', buy: 8000, base: 1.4, tune: 1000, sig: [0, 4, 7], stat: 'Tone' },
+  { id: 'flute', role: 'lead', name: 'Flute', short: 'Flute', buy: 150000, base: 0.7, tune: 15000, sig: [11, 9, 7], stat: 'Feel' },
+  { id: 'strings', role: 'pad', name: 'Strings', short: 'Strings', buy: 2500000, base: 0.8, tune: 200000, sig: [7, 2, 9, 4], stat: 'Sustain' },
 ];
 
 export const INST = Object.fromEntries(INSTRUMENTS.map((i) => [i.id, i])) as Record<InstId, InstDef>;
@@ -169,12 +169,12 @@ export const RARITY = ['Common', 'Rare', 'Epic', 'Legendary'];
 export const RARITY_MULT = [1, 3, 9, 27];
 export const LEVEL_STEP = 0.2;
 export const MAX_LEVEL = 10;
-export const TUNE_GROWTH = 1.55;
-export const TUNE_RARITY = 3.2;
+export const TUNE_GROWTH = 1.6;
+export const TUNE_RARITY = 40;
 /** Notas de cada nota da assinatura pra subir raridade (Common → Rare → Epic → Legendary). */
-export const RARITY_NOTES = [30, 120, 400];
+export const RARITY_NOTES = [400, 5000, 60000];
 /** Bateria sobe raridade com dinheiro. */
-export const RARITY_TIPS = [400, 4000, 40000];
+export const RARITY_TIPS = [5000, 500000, 50000000];
 
 /** Stat do papel: valor = (r + 1) × perRarity + nível × perLevel. */
 export const ROLE_STAT = {
@@ -184,12 +184,12 @@ export const ROLE_STAT = {
 };
 
 /** Mastery acima do Legendary (Conservatory): Sheet Music, chance e +25% de força por estrela. */
-export const MASTERY = { cost: [5, 10, 20, 40, 80], chance: [0.8, 0.65, 0.5, 0.4, 0.3], power: 0.25, tips: [50000, 250000, 1e6, 5e6, 2.5e7] };
+export const MASTERY = { cost: [10, 20, 40, 80, 160], chance: [0.8, 0.65, 0.5, 0.4, 0.3], power: 0.25, tips: [5e6, 5e7, 5e8, 5e9, 5e10] };
 
 // ── Andamento ───────────────────────────────────────────────────────────────
 
 export const TEMPOS = [92, 100, 108, 116, 124, 132, 140, 152, 164, 176];
-export const TEMPO_COST = [60, 200, 600, 2000, 6000, 20000, 75000, 250000, 1000000];
+export const TEMPO_COST = [200, 1000, 5000, 25000, 150000, 1000000, 7500000, 50000000, 400000000];
 /** Teto de BPM pela bateria: sem bateria, Common, Rare, Epic, Legendary. */
 export const TEMPO_CAP = [100, 116, 140, 164, 176];
 
@@ -204,17 +204,17 @@ export interface KeyDef {
 
 export const KEYS: KeyDef[] = [
   { pc: 0, letter: 0, cost: 0, fans: 0 },
-  { pc: 7, letter: 4, cost: 250, fans: 25 },
-  { pc: 5, letter: 3, cost: 1000, fans: 60 },
-  { pc: 2, letter: 1, cost: 4000, fans: 120 },
-  { pc: 10, letter: 6, cost: 15000, fans: 200 },
-  { pc: 9, letter: 5, cost: 60000, fans: 350 },
-  { pc: 3, letter: 2, cost: 250000, fans: 600 },
-  { pc: 4, letter: 2, cost: 1e6, fans: 1000 },
-  { pc: 8, letter: 5, cost: 4e6, fans: 1600 },
-  { pc: 11, letter: 6, cost: 1.5e7, fans: 2500 },
-  { pc: 1, letter: 1, cost: 6e7, fans: 4000 },
-  { pc: 6, letter: 3, cost: 2.5e8, fans: 6000 },
+  { pc: 7, letter: 4, cost: 1000, fans: 25 },
+  { pc: 5, letter: 3, cost: 5000, fans: 60 },
+  { pc: 2, letter: 1, cost: 25000, fans: 120 },
+  { pc: 10, letter: 6, cost: 100000, fans: 200 },
+  { pc: 9, letter: 5, cost: 500000, fans: 350 },
+  { pc: 3, letter: 2, cost: 2500000, fans: 600 },
+  { pc: 4, letter: 2, cost: 1e+07, fans: 1000 },
+  { pc: 8, letter: 5, cost: 5e+07, fans: 1600 },
+  { pc: 11, letter: 6, cost: 2.5e+08, fans: 2500 },
+  { pc: 1, letter: 1, cost: 1e+09, fans: 4000 },
+  { pc: 6, letter: 3, cost: 5e+09, fans: 6000 },
 ];
 export const KEY_BONUS = 0.1;
 
@@ -233,12 +233,12 @@ export interface ModeDef {
 
 export const MODE_LIST: ModeDef[] = [
   { id: 'ionian', fans: 0, tips: 0, notes: 0, sig: [], perk: 'Home' },
-  { id: 'mixolydian', fans: 250, tips: 3000, notes: 100, sig: ['♭VII'], perk: '+25% tips' },
-  { id: 'dorian', fans: 350, tips: 10000, notes: 150, sig: ['IV', 'IVmaj7'], perk: '+25% notes' },
-  { id: 'aeolian', fans: 500, tips: 30000, notes: 200, sig: ['♭VI'], perk: '+50% Depth' },
-  { id: 'lydian', fans: 800, tips: 100000, notes: 300, sig: ['II'], perk: '+50% Feel' },
-  { id: 'phrygian', fans: 1500, tips: 400000, notes: 500, sig: ['♭II'], perk: 'Release ×2 on ♭II → i' },
-  { id: 'locrian', fans: 3000, tips: 2e6, notes: 1000, sig: ['vii°', 'vii°7'], perk: 'Tension ×2' },
+  { id: 'mixolydian', fans: 250, tips: 15000, notes: 100, sig: ['♭VII'], perk: '+25% tips' },
+  { id: 'dorian', fans: 350, tips: 50000, notes: 150, sig: ['IV', 'IVmaj7'], perk: '+25% notes' },
+  { id: 'aeolian', fans: 500, tips: 150000, notes: 200, sig: ['♭VI'], perk: '+50% Depth' },
+  { id: 'lydian', fans: 800, tips: 500000, notes: 300, sig: ['II'], perk: '+50% Feel' },
+  { id: 'phrygian', fans: 1500, tips: 2e+06, notes: 500, sig: ['♭II'], perk: 'Release ×2 on ♭II → i' },
+  { id: 'locrian', fans: 3000, tips: 1e+07, notes: 1000, sig: ['vii°', 'vii°7'], perk: 'Tension ×2' },
 ];
 export const MODE_DEF = Object.fromEntries(MODE_LIST.map((m) => [m.id, m])) as Record<ModeId, ModeDef>;
 /** Loop no modo, com a assinatura, paga isso a mais. */
@@ -301,17 +301,17 @@ export const PROGRESSIONS: ProgDef[] = [
 export const PROG = Object.fromEntries(PROGRESSIONS.map((p) => [p.id, p])) as Record<string, ProgDef>;
 
 /** Prêmio da descoberta por raridade da progressão. */
-export const DISCOVERY = { fans: [5, 15, 40, 100], tipsBars: [20, 60, 150, 400], records: [1, 3, 8, 20] };
+export const DISCOVERY = { fans: [5, 15, 40, 100], tipsBars: [20, 60, 150, 400], records: [1, 2, 5, 12] };
 /** Mastery da progressão: voltas pra cada nível; cada nível +2% de gorjeta. */
 export const PROG_MASTERY = { loops: [25, 100, 400, 1500, 5000], bonus: 0.02 };
 
 // ── Loop ────────────────────────────────────────────────────────────────────
 
-export const LOOP8 = { fans: 800, tips: 150000 };
+export const LOOP8 = { fans: 800, tips: 2500000 };
 
 // ── Offline ─────────────────────────────────────────────────────────────────
 
-export const OFFLINE = { capHours: 4, roadieHours: 2, roadieMax: 4, baseEff: 0.5, minSeconds: 30 };
+export const OFFLINE = { capHours: 4, roadieHours: 2, roadieMax: 4, baseEff: 0.5, minSeconds: 30, notesEff: 0.5 };
 
 // ── Gigs ────────────────────────────────────────────────────────────────────
 
@@ -360,16 +360,18 @@ export const GIG = {
   levels: 10,
   /** Régua: alvo do show inteiro no nível L = base × growth^(L−1) × dificuldade do local. */
   target: 20,
-  growth: 1.8,
+  growth: 2,
   bars: 8,
   rivals: [0.75, 0.95, 1.15],
   spread: 0.12,
   requestMult: 1.5,
   /** Recurso do 1º lugar no nível L = base × growth^(L−1); colocação multiplica. */
   res: { base: 5, growth: 1.35, place: [1, 0.6, 0.35, 0.2] },
-  fans: { base: [8, 5, 3, 1], exp: 1.3 },
-  firstRecords: 2,
-  bookings: { max: 5, every: 15 * 60 * 1000 },
+  fans: { base: [0.6, 0.35, 0.15, 0], exp: 1.2 },
+  firstRecords: 1,
+  /** Chance de caixote por colocação (1º, 2º, 3º). */
+  crateChance: [0.35, 0.15, 0.05],
+  bookings: { max: 5, every: 30 * 60 * 1000 },
   sims: 400,
 };
 
@@ -406,7 +408,7 @@ export const GEAR = {
   /** Chance de ir pro +N (índice N−1). */
   chance: [1, 1, 1, 0.9, 0.8, 0.7, 0.6, 0.5, 0.45, 0.4, 0.35, 0.3, 0.25, 0.22, 0.2],
   picks: [1, 1, 2, 2, 3, 4, 5, 6, 8, 10, 12, 15, 18, 22, 26],
-  tipsBase: 50,
+  tipsBase: 200,
   /** Practice (failstack): cada falha soma isso × a chance base; teto. */
   practice: 0.15,
   practiceCap: 0.9,

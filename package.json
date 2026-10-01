@@ -8,10 +8,11 @@
     "build": "tsc --noEmit && vite build",
     "preview": "vite preview",
     "test": "vitest run",
-    "sim": "vitest run --dir sim --config sim/vitest.config.ts",
+    "sim": "vitest run --config sim/vitest.config.ts",
     "build:artifact": "npm run build && node scripts/artifact.mjs"
   },
   "devDependencies": {
+    "@types/node": "^22.20.4",
     "typescript": "^7.0.2",
     "vite": "^8.3.0",
     "vite-plugin-singlefile": "^2.3.3",

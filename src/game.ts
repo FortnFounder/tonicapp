@@ -376,7 +376,7 @@ export interface BarResult {
 /** Notas que um compasso solta (sem a grade). */
 export function barNotes(s: State, id: string, gradeNotes: number): [number, number][] {
   const pcs = absPcs(CHORD[id], tonicOf(s));
-  const per = playing(s) * (1 + echo(s)) * gradeNotes;
+  const per = (1 + echo(s)) * gradeNotes;
   return pcs.map((pc, i) => [pc, per * (i === 0 ? NOTES_ROOT_BONUS : 1)]);
 }
 
@@ -394,7 +394,7 @@ export function playBar(s: State, rng: Rng, now: number): BarResult {
   const chips = tone(s);
   const tips = chips * info.mult * bt.release * g.mult * tipsMult(s, now);
   const notes = barNotes(s, id, g.notes);
-  const fans = FANS_PER_BAR * (info.score / 100) * Math.sqrt(g.mult) * playing(s);
+  const fans = FANS_PER_BAR * (info.score / 100) * Math.sqrt(g.mult);
 
   s.tension = bt.after;
   s.tips += tips;
@@ -727,9 +727,9 @@ export function away(s: State, now: number, royaltiesPerHour = 0): AwayResult | 
   const notes = Array(12).fill(0);
   for (let k = 0; k < s.loop.length; k++) {
     const share = Math.floor(bars / s.loop.length) + (k < bars % s.loop.length ? 1 : 0);
-    for (const [pc, v] of barNotes(s, s.loop[k], expectedGradeNotes(view[k].odds))) notes[pc] += v * share * eff;
+    for (const [pc, v] of barNotes(s, s.loop[k], expectedGradeNotes(view[k].odds))) notes[pc] += v * share * eff * OFFLINE.notesEff;
   }
-  const fans = FANS_PER_BAR * (loopInfo(s).score / 100) * playing(s) * bars * eff;
+  const fans = FANS_PER_BAR * (loopInfo(s).score / 100) * bars * eff;
   s.tips += tips + royalties;
   s.stats.tipsTotal += tips + royalties;
   s.fans += fans;

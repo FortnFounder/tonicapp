@@ -8,6 +8,7 @@ import { isOpen } from '../unlock';
 import { sfx } from '../audio/sfx';
 import * as fx from '../fx';
 import { LockLine, NoteCost, SecHead } from './common';
+import { coachOn } from '../coach';
 
 const FN = ['Tonic', 'Subdominant', 'Dominant'];
 
@@ -91,7 +92,7 @@ function ChordCard(p: { c: ChordDef }) {
       {!known && (
         <>
           <NoteCost cost={cost} />
-          <button class="btn" disabled={!can} onClick={learn}>
+          <button class={`btn${c.id === 'vi' ? coachOn('learn-vi') : ''}`} disabled={!can} onClick={learn}>
             Learn
           </button>
         </>

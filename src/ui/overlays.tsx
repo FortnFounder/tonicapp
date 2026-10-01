@@ -176,7 +176,7 @@ export function DiscoveryModal() {
         <span class="reward">
           <Record size={16} /> +{DISCOVERY.records[p.rarity]}
         </span>
-        <span class="reward">+{DISCOVERY.tipsBars[p.rarity]} bars of tips</span>
+        <span class="reward">+{money(G.expectedTipsPerBar(game, Date.now()) * DISCOVERY.tipsBars[p.rarity])}</span>
       </div>
       <button class="btn big" onClick={next}>
         Keep playing

@@ -8,6 +8,7 @@ import { isOpen } from '../unlock';
 import { sfx } from '../audio/sfx';
 import * as fx from '../fx';
 import { LockLine, NoteCost, Pips, Rarity, SecHead } from './common';
+import { coachOn } from '../coach';
 import { Amp, INST_ICON, Pedal, Sheet as SheetIcon } from './icons';
 
 export function BandScreen() {
@@ -69,7 +70,7 @@ function InstCard(p: { d: InstDef }) {
   let action;
   if (!it.own) {
     action = (
-      <button class="btn" disabled={game.tips < d.buy} onClick={() => (act((s) => G.buyInst(s, d.id)) ? (sfx.buy(), fx.toast(`${d.short} joins the band`)) : sfx.deny())}>
+      <button class={`btn${d.id === 'drums' ? coachOn('hire-drums') : ''}`} disabled={game.tips < d.buy} onClick={() => (act((s) => G.buyInst(s, d.id)) ? (sfx.buy(), fx.toast(`${d.short} joins the band`)) : sfx.deny())}>
         Hire <span class="mono">{money(d.buy)}</span>
       </button>
     );

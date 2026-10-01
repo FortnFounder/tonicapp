@@ -5,6 +5,7 @@ import { boot } from '../conductor';
 import { game, setUi, ui } from '../store';
 import { nextNews, screenOpen, type Screen } from '../unlock';
 import { Rolling } from './common';
+import { coachOn } from '../coach';
 import { Band, Coin, Gear, Heart, INST_ICON, Mic, Record, Stage, Studio, Theory } from './icons';
 
 export function StartScreen() {
@@ -65,7 +66,7 @@ export function Dock() {
       {TABS.map((t) => {
         const open = screenOpen(game, t.id);
         return (
-          <button key={t.id} class={(ui.screen === t.id ? 'on' : '') + (open ? '' : ' locked')} disabled={!open} aria-current={ui.screen === t.id} onClick={() => setUi({ screen: t.id, picker: null })}>
+          <button key={t.id} class={(ui.screen === t.id ? 'on' : '') + (open ? '' : ' locked') + coachOn(('dock-' + t.id) as never)} disabled={!open} aria-current={ui.screen === t.id} onClick={() => setUi({ screen: t.id, picker: null })}>
             <t.Icon />
             {t.name}
             {news && news.screen === t.id && ui.screen !== t.id && <span class="badge" />}
