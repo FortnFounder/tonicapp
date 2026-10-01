@@ -44,8 +44,8 @@ gorjeta = Tone × HarmonyMult × Release × Grade × KeyMult × ModeMult × boos
 - **Tensão e resolução** (Salimpoor 2011: dopamina na antecipação e no clímax): acorde fora da tônica **acumula** a tensão dele num medidor (teto 30). Quando o loop cai na tônica, **solta**: Release = 1 + acumulado × 0,05 × (1 + Depth). I–IV–V–I acumula 8,6 e paga ×1,43 no I. Cadência deceptiva (V→vi) solta metade, guarda metade e **dobra a chance** do compasso (surpresa).
 - **Grade (a sorte do compasso):** Solid ×1 · **Sweet ×3** (8%) · **Soaring ×10** (1,5%) · **Transcendent ×50** (0,15%). Feel multiplica as chances; o compasso que solta tensão ganha + (acumulado ÷ 10) × chance. Teto 60%.
 - **Garantia (pity), à mostra:** Soaring+ no máximo a cada 60 compassos, com rampa a partir do 45 (+5% por compasso, igual ao soft pity do Genshin). Transcendent no máximo a cada 500. Contadores na tela.
-- **Notas:** cada nota do acorde cai × instrumentos tocando × (1 + Echo%); a fundamental cai em dobro (o baixo dobra a fundamental). Sweet ×2, Soaring ×5, Transcendent ×20 notas e 1 Gold Record.
-- **Fãs:** 0,02 × H/100 por compasso; o grosso vem dos Gigs.
+- **Notas:** cada nota do acorde cai 1 × (1 + Echo%); a fundamental cai em dobro (o baixo dobra a fundamental). Sweet ×2, Soaring ×5, Transcendent ×20 notas e 1 Gold Record. Offline: notas a 50% da eficiência.
+- **Fãs:** 0,0015 × H/100 × √grade por compasso; o grosso vem dos Gigs e das descobertas.
 
 ## 💰 Moedas e recursos
 
@@ -73,7 +73,7 @@ Regras herdadas do Distillery: **caixote nunca por dinheiro real**, moeda do jog
 | Lead | Flute | Feel (sorte) | melodia esparsa → notas do acorde nos tempos fortes e de passagem nos fracos → ornamentos → terça acima nos compassos raros |
 | Pad | Strings | Sustain (offline e notas) | entra no Rare: sustenta o acorde e cresce no compasso que solta tensão |
 
-- **Afinar** (Tune) nível 1–10 com dinheiro, custo × 1,55 por nível × 3 por raridade. No 10, sobe a raridade com as **notas da assinatura** do instrumento (o violão pede as notas de um acorde de Mi menor com sétima, o piano a tríade da tônica…). A raridade nova volta pro nível 1 com força maior que o 10 anterior (2,8 → 3).
+- **Afinar** (Tune) nível 1–10 com dinheiro, custo × 1,6 por nível × 40 por raridade (medido no simulador). No 10, sobe a raridade com as **notas da assinatura** do instrumento (400 · 5.000 · 60.000 de cada): o violão pede as cordas soltas E A D G B, o baixo E A D G, o piano C E G, a flauta B A G, as cordas G D A E. A bateria paga em dinheiro. A raridade nova volta pro nível 1 com força maior que o 10 anterior (2,8 → 3).
 - Acima do Legendary: **Mastery ★1–★5** no Conservatory, com Sheet Music e chance.
 - **Equipamento:** 2 vagas por instrumento (Pedal e Accessory). Item com raridade, stat principal e até 4 substats (Tone, Feel, Depth, Echo, Sustain, Stage); +3/+6/+9/+12 sorteiam substat nova ou sobem uma (runa do Summoners War).
 
@@ -92,11 +92,11 @@ Regras herdadas do Distillery: **caixote nunca por dinheiro real**, moeda do jog
 | **Recording Studio** | 600 fãs | Tape | harmonia alta, tensão |
 | **Summer Festival** | 1.500 fãs | Crates + muitos fãs | BPM alto, sorte |
 
-- Cada local tem **níveis 1–10** com dificuldade fixa (a régua não sobe com você; é meta). Alvo do nível L = 6 × 1,8^(L−1).
+- Cada local tem **níveis 1–10** com dificuldade fixa (a régua não sobe com você; é meta). Alvo do show no nível L = 20 × 2^(L−1) × dificuldade do local (1 · 2,5 · 6 · 15).
 - **Show ao vivo:** a banda toca 2 voltas do loop (8 compassos) no palco, com público. Cada compasso conta na tela no estilo Balatro: **Tone (azul) × Mult (vermelho)** e a Grade (dourado) multiplica. O pedido do júri cumprido vale ×1,5.
-- **3 bandas rivais** com nota sorteada em volta do alvo (×0,75 · ×0,95 · ×1,15, ±12%). Colocação 1º–4º dá recurso, caixote e fãs.
+- **3 bandas rivais** com nota sorteada em volta do alvo (×0,75 · ×0,95 · ×1,15, ±12%). Colocação 1º–4º dá recurso e fãs; caixote com chance (35% no 1º, 15% no 2º, 5% no 3º); 1ª vitória no nível paga ⌈L/2⌉ Gold Records.
 - **Chance antes de tocar:** o jogo roda 400 shows de Monte Carlo com as suas chances reais e mostra "1st 54% · Top 2 81%".
-- **Bookings:** guarda 5, volta 1 a cada 15 min.
+- **Bookings:** guarda 5, volta 1 a cada 30 min.
 
 ## 🎹 Jam (o modo ativo, opcional)
 
@@ -107,7 +107,7 @@ Regras herdadas do Distillery: **caixote nunca por dinheiro real**, moeda do jog
 
 ## 🗝️ Tons e modos
 
-- **Círculo das quintas:** cada tom comprado +10% em toda gorjeta e libera as notas dele pra farmar. G 250 · F 1K · D 4K · B♭ 15K · A 60K · E♭ 250K · E 1M · A♭ 4M · B 15M · D♭ 60M · F♯ 250M, cada um com um mínimo de fãs.
+- **Círculo das quintas:** cada tom comprado +10% em toda gorjeta e libera as notas dele pra farmar. G 1K · F 5K · D 25K · B♭ 100K · A 500K · E♭ 2,5M · E 10M · A♭ 50M · B 250M · D♭ 1B · F♯ 5B, cada um com um mínimo de fãs.
 - **Modos:** Ionian (início) → Mixolydian → Dorian → Aeolian → Lydian → Phrygian → Locrian. Cada um custa a **nota característica** (a que difere do maior) e dinheiro.
 - **Assinatura do modo:** loop todo diatônico ao modo e com o acorde característico (Mixolydian ♭VII, Dorian IV maior com i, Aeolian ♭VI, Lydian II, Phrygian ♭II, Locrian i°) ganha ×1,25 e o bônus do modo (Lydian +50% Feel, Mixolydian +25% gorjeta, Dorian +25% notas, Aeolian +50% Depth, Phrygian ×2 na soltura do ♭II→i, Locrian tensão ×2).
 
@@ -176,15 +176,50 @@ Palco à noite (`--night #111230`), **Shrikhand** (título e acorde gigante), **
 | Etapa | O quê | Estado |
 |---|---|---|
 | 1 | Projeto (Vite + Preact + TS + vitest + single-file), GDD | feito |
-| 2 | Motor de teoria + testes (grafia, modos, acordes, função, tensão, fluxo, condução de vozes) | a fazer |
-| 3 | Regra do jogo: compasso, harmonia, tensão/soltura, grade com pity, notas, banda, tons, modos, vocabulário, Songbook, offline | a fazer |
-| 4 | Motor de som: sequenciador por compasso, 7 instrumentos, arranjo por raridade e grade, mixagem | a fazer |
-| 5 | Telas: Stage, Band, Gigs, Theory, Studio, folhas, (i), suco | a fazer |
-| 6 | Gigs ao vivo com Monte Carlo, caixotes carta a carta, equipamento, Workbench | a fazer |
-| 7 | Jam, Studio (Songs, royalties, Charts), boosts com Gold Records | a fazer |
-| 8 | Simulador de economia por perfil e balanceamento | a fazer |
-| 9 | Tutorial guiado, tarefas do dia, login, temporada | próximo |
+| 2 | Motor de teoria + testes (grafia, modos, acordes, função, tensão, fluxo, condução de vozes) | feito |
+| 3 | Regra do jogo: compasso, harmonia, tensão/soltura, grade com pity, notas, banda, tons, modos, vocabulário, Songbook, offline | feito |
+| 4 | Motor de som: sequenciador por compasso, 7 instrumentos, arranjo por raridade e grade, mixagem | feito |
+| 5 | Telas: Stage, Band, Gigs, Theory, Studio, folhas, (i), suco | feito |
+| 6 | Gigs ao vivo com Monte Carlo, caixotes carta a carta, equipamento, Workbench | feito |
+| 7 | Jam, Studio (Songs, royalties, Charts), boosts com Gold Records | feito |
+| 8 | Simulador de economia por perfil e balanceamento | feito |
+| 9 | Mãozinha dos primeiros passos (feita); tarefas do dia, login, temporada | próximo |
 | 10 | Android (Capacitor), conta na nuvem, som gravado | depois |
+
+## 📈 Ritmo medido no simulador (01/10)
+
+`npm run sim -- economia` (robô com as regras de verdade, 30 dias, 2 sementes, mediana). O robô otimiza o loop por gorjeta (subida de coordenada), aprende o acorde mais barato, contrata, afina o mais barato, compra tom e modo quando sobra, sobe o local mais difícil onde ganha o próximo nível com ≥ 50% e melhora o equipamento vestido.
+
+A 1ª versão terminava o jogo inteiro no dia 1 (até pra quem joga 20 min): notas e fãs caíam × músicos, o offline de 3 × 4 h por dia rendia ~13 mil compassos e os custos não acompanhavam a multiplicação da renda. Mudou: nota e fã por compasso sem × músicos; nota offline a 50% da eficiência; raridade 400 · 5.000 · 60.000 notas; afinar ×1,6 por nível e ×40 por raridade; instrumentos $25 · $400 · $8K · $150K · $2,5M; tons de $1K a $5B; BPM até $400M; loop de 8 $2,5M; gig com fã [0,6 · 0,35 · 0,15] × L^1,2, caixote por chance (35/15/5%), régua ×2 por nível e Gold Record de 1ª vitória = ⌈L/2⌉.
+
+| Marco | 20 min/dia | 1 h/dia (60%) | 2 h/dia | 4 h/dia |
+|---|---|---|---|---|
+| Bateria, baixo, vi/ii/iii, Sevenths | 1ª sessão | 1ª sessão | 1ª sessão | 1ª sessão |
+| 2º tom | dia 1 | 1ª sessão | 1ª sessão | 1ª sessão |
+| Piano elétrico, Jazz Cellar | dia 1 | dia 1 | dia 1 | dia 1 |
+| 1º Rare | dia 1 | dia 1 | dia 1 | dia 1 |
+| Borrowed | dia 2 | dia 2 | dia 1 | dia 1 |
+| 1º Epic | dia 3 | dia 2 | dia 1 | dia 1 |
+| Applied | dia 5 | dia 3 | dia 3 | dia 2 |
+| Studio (1ª música) | dia 7 | dia 4 | dia 3 | dia 2 |
+| Loop de 8 | dia 9 | dia 6 | dia 4 | dia 3 |
+| Color, 1.000 fãs | dia 10 | dia 7 | dia 5 | dia 3 |
+| 1º Legendary | dia 11 | dia 8 | dia 5 | dia 6 |
+| Summer Festival | dia 13 | dia 9 | dia 7 | dia 5 |
+| 1ª ★ (Conservatory) | dia 16 | dia 11 | dia 7 | dia 7 |
+| Modo Locrian | dia 21 | dia 15 | dia 10 | dia 7 |
+| 10 tons | — | dia 22 | dia 16 | dia 30 |
+| Equipamento +12 | dia 26 | dia 23 | dia 10 | dia 18 |
+| 176 BPM | — | dia 24 | dia 18 | — |
+| Festival nível 10 | — | — | dia 26 | — |
+
+Renda ($/s, 1 h/dia): dia 1 249 · dia 2 668 · dia 7 3,7K · dia 14 14,8K · dia 30 28K. Algo novo em toda sessão da 1ª semana; a curva achata depois do dia 14 (wall suave), que é a regra herdada do Distillery (14 dias de progresso forte).
+
+**Em aberto:** o robô só acha ~8 progressões (ele otimiza gorjeta, não coleção); gente acha mais. A renda do perfil de 2 h cai do dia 14 pro 30 (o robô troca de tom pra farmar nota e perde a otimização); investigar. Notas viram sobra depois do dia 9 (todos os acordes aprendidos): a próxima moeda de notas é Mastery de progressão e caixote.
+
+## 🔊 Som medido (01/10)
+
+Saída interceptada no Chromium: só o violão RMS 0,05 e pico 0,32; banda inteira Legendary RMS 0,14 e pico 0,73. Sem clipar, sem NaN, sem silêncio.
 
 ## 🔬 Pesquisa (01/10)
 
