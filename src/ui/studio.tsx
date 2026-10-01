@@ -159,7 +159,7 @@ function Bench(p: { uid: number }) {
           Details
         </button>
       </div>
-      <svg class="gauge" viewBox="0 0 200 118" onClick={() => phase === 'spin' && finish()} role="img" aria-label={`Chance ${pct(chance)}`}>
+      <svg class="gauge" viewBox="0 0 200 132" onClick={() => phase === 'spin' && finish()} role="img" aria-label={`Chance ${pct(chance)}`}>
         <path d="M20 100 A80 80 0 0 1 180 100" fill="none" stroke="var(--panel2)" stroke-width="16" stroke-linecap="round" />
         <Arc from={0} to={Math.min(1, base)} color="var(--sub)" />
         {chance > base && <Arc from={base} to={chance} color="rgba(56,209,174,.45)" />}
@@ -171,7 +171,7 @@ function Bench(p: { uid: number }) {
           <line x1="100" y1="100" x2="100" y2="30" stroke="var(--text)" stroke-width="3" stroke-linecap="round" />
         </g>
         <circle cx="100" cy="100" r="7" fill="var(--text)" />
-        <text x="100" y="80" text-anchor="middle" font-family="DM Mono, monospace" font-size="16" fill="var(--text)">
+        <text x="100" y="128" text-anchor="middle" font-family="DM Mono, monospace" font-size="16" fill="var(--text)">
           {pct(chance)}
         </text>
       </svg>

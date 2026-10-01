@@ -271,6 +271,8 @@ main.screen {
 .pick { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
 .pick .slot { background: var(--panel2); min-height: 92px; }
 .pick .slot.cur { border-color: var(--text); }
+.pick .slot .n { font-size: clamp(16px, 5vw, 22px); white-space: nowrap; max-width: 100%; overflow: hidden; text-overflow: clip; }
+.slot .n { white-space: nowrap; max-width: 100%; }
 .pick .slot .d { font: 500 11px var(--mono); color: var(--dim); }
 .pick .slot .d.up { color: var(--sub); }
 .pick .slot .d.down { color: var(--dom); }
