@@ -1,0 +1,26 @@
+{
+  "name": "tonic",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "sim": "vitest run --dir sim --config sim/vitest.config.ts",
+    "build:artifact": "npm run build && node scripts/artifact.mjs"
+  },
+  "devDependencies": {
+    "typescript": "^7.0.2",
+    "vite": "^8.3.0",
+    "vite-plugin-singlefile": "^2.3.3",
+    "vitest": "^5.0.1"
+  },
+  "dependencies": {
+    "@fontsource/dm-mono": "^5.3.0",
+    "@fontsource/figtree": "^5.3.0",
+    "@fontsource/shrikhand": "^5.3.0",
+    "preact": "^10.29.8"
+  }
+}

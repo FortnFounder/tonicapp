@@ -1,0 +1,5 @@
+{
+  "appId": "com.tonic.app",
+  "appName": "Tonic",
+  "webDir": "dist"
+}
